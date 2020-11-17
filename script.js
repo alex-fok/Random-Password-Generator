@@ -39,6 +39,14 @@ function getChars() {
 }
 // Prompt user and return a number representing password length
 function getPwdLength() {
+  while(true) {
+    const input = prompt("Type in a number for the length of password (From 8-128)");
+
+    if (input === null)
+      break;
+    
+    return parseInt(input);
+  }
   return 0;
 }
 
