@@ -13,10 +13,26 @@ function getChars() {
     const regex = /lowercase|uppercase|numeric|special character/g;
     const result = input.toLowerCase().match(regex);
 
-    if(result)
-      return [];  
-    else
+    if(result) {
+      const charSet = {
+        lowercase:['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+        uppercase:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+        numeric: [0,1,2,3,4,5,6,7,8,9],
+        specialChar:[' ','!','\"','#','$','%','&','\'','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\\',']','^','_','`','{','|','}','~']
+      };
+
+      return (
+        [].concat(
+          result.includes("lowercase") ? charSet.lowercase : [],
+          result.includes("uppercase") ? charSet.uppercase : [],
+          result.includes("numeric") ? charSet.numeric : [],
+          result.includes("special character") ? charSet.specialChar : []
+        )
+      );
+    }  
+    else {
       alert("Invalid input. Please try again."); 
+    }
   }
 
   return null;
