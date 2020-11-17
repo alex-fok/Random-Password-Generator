@@ -59,10 +59,9 @@ function getPwdLength() {
 
 // Generate password 
 function generatePassword() {
-  var chars = getChars();
-  var length = getPwdLengths();
+  let chars, length;
 
-  if (!chars || !length)
+  if (!(chars = getChars()) || !(length = getPwdLength()))
     return "";
 
   var pwdArr = [length];
