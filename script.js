@@ -3,14 +3,21 @@ var generateBtn = document.querySelector("#generate");
 
 // Prompt user and return a set of characters
 function getChars() {
+  while(true){
   
-  const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
+    const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
 
-  const regex = /lowercase|uppercase|numeric|special character/g;
-  const result = input.toLowerCase().match(regex);
+    if (input === null)
+      break;
 
-  if(result)
-    return [];  
+    const regex = /lowercase|uppercase|numeric|special character/g;
+    const result = input.toLowerCase().match(regex);
+
+    if(result)
+      return [];  
+    else
+      alert("Invalid input. Please try again."); 
+  }
 
   return null;
 }
