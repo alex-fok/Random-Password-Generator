@@ -1,7 +1,7 @@
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
 
-// Prompt user and return a set of characters
+// Prompt user and return array representing a set of characters
 function getChars() {
   while(true){
     const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
@@ -15,7 +15,7 @@ function getChars() {
     const result = input.toLowerCase().match(regex);
 
 
-    // If input contains one or more character type, add in the characters for return value
+    // If input contains one or more character type, add in the corresponding characters for return value
     if(result) {
       const charSet = {
         lowercase:['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
@@ -72,7 +72,7 @@ function getPwdLength() {
 function generatePassword() {
   let chars, length;
 
-  // Check if user quits in the middle of the operation
+  // Check if user quits during of the operation
   if (!(chars = getChars()) || !(length = getPwdLength()))
     return "";
 
@@ -93,7 +93,6 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
