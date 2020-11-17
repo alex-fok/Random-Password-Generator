@@ -4,7 +4,6 @@ var generateBtn = document.querySelector("#generate");
 // Prompt user and return a set of characters
 function getChars() {
   while(true){
-  
     const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
 
     if (input === null)
@@ -34,9 +33,9 @@ function getChars() {
       alert("Invalid input. Please try again."); 
     }
   }
-
   return null;
 }
+
 // Prompt user and return a number representing password length
 function getPwdLength() {
   while(true) {
@@ -62,10 +61,18 @@ function getPwdLength() {
 function generatePassword() {
   var chars = getChars();
   var length = getPwdLengths();
-  console.log("Characters allowed: ", chars);
-  console.log("Length: ", length);
 
-  return "password";
+  if (!chars || !length)
+    return "";
+
+  var pwdArr = [length];
+  
+  for (let i = 0; i < length; i++) {
+    const j = Math.floor(Math.random() * chars.length);
+    pwdArr[i] = chars[j];
+  }
+
+  return pwdArr.join("");
 }
 
 // Write password to the #password input
