@@ -6,12 +6,16 @@ function getChars() {
   while(true){
     const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
 
+    // If user clicks cancel, break out of the loop
     if (input === null)
       break;
 
+    // Compare result with regex. Transform user input to string array for later computation
     const regex = /lowercase|uppercase|numeric|special character/g;
     const result = input.toLowerCase().match(regex);
 
+
+    // If input contains one or more character type, add in the characters for return value
     if(result) {
       const charSet = {
         lowercase:['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
@@ -28,11 +32,14 @@ function getChars() {
           result.includes("special character") ? charSet.specialChar : []
         )
       );
-    }  
+    }
+    // If input contains no matching character type, alert user for their invalid input. Go back to the start of the loop
     else {
       alert("Invalid input. Please try again."); 
     }
   }
+
+  // Return falsy (null) if loop breaks
   return null;
 }
 
@@ -41,11 +48,13 @@ function getPwdLength() {
   while(true) {
     const input = prompt("Type in a number for the length of password (From 8-128)");
 
+    // If user clicks cancel, break out of the loop
     if (input === null)
       break;
 
     const length = parseInt(input);
     
+    // If input can be converted to a number, check if input is within [8, 128]. If either one is not satisfied, alert user and start over the loop
     if (!isNaN(length))
       if (length >= 8 && length <= 128)
         return length;
@@ -54,6 +63,8 @@ function getPwdLength() {
     else
       alert("Invalid input. Please try again.");
   }
+
+  // If loop ends without returning, return falsy (0)
   return 0;
 }
 
@@ -61,11 +72,13 @@ function getPwdLength() {
 function generatePassword() {
   let chars, length;
 
+  // Check if user quits in the middle of the operation
   if (!(chars = getChars()) || !(length = getPwdLength()))
     return "";
 
   var pwdArr = [length];
   
+  // Build password with string array and selected character set
   for (let i = 0; i < length; i++) {
     const j = Math.floor(Math.random() * chars.length);
     pwdArr[i] = chars[j];
