@@ -44,8 +44,16 @@ function getPwdLength() {
 
     if (input === null)
       break;
+
+    const length = parseInt(input);
     
-    return parseInt(input);
+    if (!isNaN(length))
+      if (length >= 8 && length <= 128)
+        return length;
+      else
+        alert("Password must be at least 8 characters and no more than 128 characters");
+    else
+      alert("Invalid input. Please try again.");
   }
   return 0;
 }
