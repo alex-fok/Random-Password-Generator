@@ -4,14 +4,14 @@ let generateBtn = document.querySelector("#generate");
 // Prompt user and return array representing a set of characters
 function getChars() {
   while(true){
-    const input = prompt("Type in one or more character type from the following categories: Lowercase, Uppercase, Numeric, Special Character");
+    const input = prompt("Type in the first letter(s) of character type to be included:\nl : Lowercase | u : Uppercase | n : Numeric | s : Special Character");
 
     // If user clicks cancel, break out of the loop
     if (input === null)
       break;
 
     // Compare result with regex. Transform user input to string array for later computation
-    const regex = /lowercase|uppercase|numeric|special character/g;
+    const regex = /l|u|n|s/g;
     const result = input.toLowerCase().match(regex);
 
 
@@ -26,16 +26,16 @@ function getChars() {
 
       return (
         [].concat(
-          result.includes("lowercase") ? charSet.lowercase : [],
-          result.includes("uppercase") ? charSet.uppercase : [],
-          result.includes("numeric") ? charSet.numeric : [],
-          result.includes("special character") ? charSet.specialChar : []
+          result.includes('l') ? charSet.lowercase : [],
+          result.includes('u') ? charSet.uppercase : [],
+          result.includes('n') ? charSet.numeric : [],
+          result.includes('s') ? charSet.specialChar : []
         )
       );
     }
     // If input contains no matching character type, alert user for their invalid input. Go back to the start of the loop
     else {
-      alert("Invalid input. Please try again."); 
+      alert("Invalid input. Please try again. (Example: s, lux, nu, ls, nlsu)"); 
     }
   }
 
