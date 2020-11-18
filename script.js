@@ -35,7 +35,7 @@ function getChars() {
     }
     // If input contains no matching character type, alert user for their invalid input. Go back to the start of the loop
     else {
-      alert("Invalid input. Please try again. (Example: s, lux, nu, ls, nlsu)"); 
+      alert("Invalid input. Please try again. (ex: s, lux, nu, ls, nlsu)"); 
     }
   }
 
